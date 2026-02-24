@@ -1,6 +1,6 @@
 package cz.uhk.zlomkyy.data;
 
-public class Zlomek {
+public class Zlomek extends Number {
     private int citatel;
     private int jmenovatel;
 
@@ -9,10 +9,31 @@ public class Zlomek {
         jmenovatel = 1;
     } // defaultni konstruktor
 
+    @Override
+    public int intValue() {
+        return (int) doubleValue();  //uthnu to co je za desetinou čárkou
+    }
+
+    @Override
+    public long longValue() {
+        return Math.round(doubleValue()); //zaokrouhlení
+    }
+
+    @Override
+    public float floatValue() {
+        return (float) doubleValue();
+    }
+
+    @Override
+    public double doubleValue() {
+        return citatel / (double) jmenovatel;
+    }
+
     public Zlomek(int citatel, int jmenovatel) {
         this.citatel = citatel;
         this.jmenovatel = jmenovatel;
     }
+
 
     //selektory = gettry
     public int getCitatel() {
