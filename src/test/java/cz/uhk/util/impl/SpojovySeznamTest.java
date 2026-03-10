@@ -56,4 +56,14 @@ class SpojovySeznamTest {
         initData();
         assertEquals(4,seznam.pocet(), "pocet - 2 prvky");
     }
+
+    @Test
+    void pridejNapozici() {
+        initData();
+
+        seznam.pridejNaPozici(45 , 2);
+
+        assertEquals(45, seznam.vrat(4));
+
+    }
 }
