@@ -88,28 +88,23 @@ public class SpojovySeznam<E> implements Seznam<E> {
 
     @Override
     public void pridejNaPozici(E hodnota, int pozice) {
-
-        PrvekSeznamu<E> aktualni = prvni;
         var novy = new PrvekSeznamu<E>(hodnota);
-        var predchozi = vratPrvek(pozice -1);
-        int aktualniPozice = 0;
-        var pocet = pocet();
-        while (aktualniPozice != pozice) {
-            aktualni = aktualni.dalsi;
-            aktualniPozice++;
+        if (pozice == 0){
+            novy.dalsi = prvni;
+            prvni = novy;
         }
-            for(int i = aktualniPozice; i <= pocet; i++) {
-                    var pom =  aktualni;
-                    aktualni = novy;
-                    novy = pom;
+        else if(pozice == pocet()  ){
+            posledni.dalsi = novy;
+            posledni = posledni.dalsi;
+        }else{
 
-
-                }
-
-
-
+            PrvekSeznamu<E> predchozi = vratPrvek(pozice - 1);
+            novy.dalsi = predchozi.dalsi;
+            predchozi.dalsi = novy;
+        }
     }
-}
+
+
 
 class PrvekSeznamu<T> {
     T hodnota;
@@ -119,3 +114,5 @@ class PrvekSeznamu<T> {
         this.hodnota = hodnota;
     }
 }
+}
+

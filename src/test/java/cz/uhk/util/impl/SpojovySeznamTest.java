@@ -60,10 +60,15 @@ class SpojovySeznamTest {
     @Test
     void pridejNapozici() {
         initData();
-
+        seznam.pridejNaPozici(1 , 0);
         seznam.pridejNaPozici(45 , 2);
+        seznam.pridejNaPozici(80 , 5);
 
-        assertEquals(45, seznam.vrat(4));
+
+        assertEquals(45, seznam.vrat(2));
+        assertEquals(80, seznam.vrat(5));
+        assertEquals(1, seznam.vrat(0));
+
 
     }
 }
